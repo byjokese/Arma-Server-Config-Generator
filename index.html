@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+
+	<title>Arma 3 Server Config Generator</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	    crossorigin="anonymous">
+</head>
+
+<body cz-shortcut-listen="true">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">By-Jokese</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Arma 3 Server Config Generator</h1>
+			<p>Generate your own server configs easily.</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-sm">
+				<div style="text-align: center;">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-secondary active">
+							<input type="radio" name="options" id="option1" autocomplete="off" checked> Basic
+						</label>
+						<label class="btn btn-secondary">
+							<input type="radio" name="options" id="option2" autocomplete="off"> Advanced
+						</label>
+					</div>
+				</div>
+				<form>
+					<fieldset>
+						<h2>Global Settings</h2>
+						<div class="form-group">
+							<label for="hostname">Host Name</label>
+							<input type="text" class="form-control" name="hostname" id="hostname" aria-describedby="hostnameHelp" placeholder="Server public Name">
+							<small id="hostnameHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
+						</div>
+						<div class="form-group">
+							<label for="password">Server Password</label>
+							<input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp" placeholder="Password">
+							<small id="passwordHelp" class="form-text text-muted">Password for joining, eg connecting to the server</small>
+						</div>
+						<div class="form-group">
+							<label for="passwordAdmin">Admin Password</label>
+							<input type="passwordAdmin" class="form-control" name="passwordAdmin" id="passwordAdmin" aria-describedby="passwordAdminHelp" placeholder="Admin Password">
+							<small id="passwordAdminHelp" class="form-text text-muted">Password to become server admin. When you're in Arma MP and connected to the server, type '#login mypassword'</small>
+						</div>
+						<div class="form-group">
+							<label for="serverCommandPassword">Command Password</label>
+							<input type="password" class="form-control" name="serverCommandPassword" id="serverCommandPassword" aria-describedby="serverCommandPasswordHelp" placeholder="Password">
+							<small id="serverCommandPasswordHelp" class="form-text text-muted">Password required by alternate syntax of serverCommand on server-side scripting.</small>
+						</div>
+						<div class="form-group">
+							<label for="motd">Messague of the Day (Motd)</label>
+							<textarea class="form-control" rows="2" name="motd" id="motd" aria-describedby="motdHelp" placeholder='"Messague 1","Messague 2","Messague 3"'></textarea>
+							<small id="motdHelp" class="form-text text-muted">Welcome messagues separated by commas.</small>
+						</div>
+						<div class="form-group">
+							<label for="motdInterval">Motd Interval</label>
+							<input type="number" class="form-control" name="motdInterval" id="motdInterval" aria-describedby="motdIntervalHelp" min="0" placeholder='10'>
+							<small id="motdIntervalHelp" class="form-text text-muted">Time interval (in seconds) between each message.</small>
+						</div>
+						<div class="form-group">
+							<label for="adminList">Admin Whitelist</label>
+							<input type="text" class="form-control" name="adminList" id="adminList" aria-describedby="adminListHelp" placeholder='"UID1","UID2"'>
+							<small id="adminListHelp" class="form-text text-muted">List of admin Steam UIDs that are whitelisted. Those can use #login w/o password.</small>
+						</div>
+						<div class="form-group">
+							<label for="headlessClients">Headless Client Whitelist</label>
+							<input type="text" class="form-control" name="headlessClients" id="headlessClients" aria-describedby="headlessClientsHelp" placeholder='"127.0.0.1","8.8.8.8","IP"'>
+							<small id="headlessClientsHelp" class="form-text text-muted">List of IPs that are whitelisted for joining as HeadlessClient.</small>
+						</div>
+						<div class="form-group">
+							<label for="localClient">Local Client Whitelist (low latency)</label>
+							<input type="text" class="form-control" name="localClient" id="localClient" aria-describedby="localClientHelp" placeholder='"127.0.0.1","8.8.8.8","IP"'>
+							<small id="localClientHelp" class="form-text text-muted">Same as Headless Client Whitelist, but to indicate clients with unlimited bandwidth and nearly no latency.</small>
+						</div>
+					</fieldset>
+					<fieldset>
+						<h2>Connection Settings</h2>
+						<div class="form-group">
+							<label for="maxplayers">Max Players</label>
+							<input type="number" class="form-control" id="maxplayers" aria-describedby="maxplayersHelp" value="0" placeholder="Server public Name">
+							<small id="maxplayersHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
+						</div>
+						<div class="form-group">
+							<label for="kickduplicates">Kick Duplicates</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="kickduplicates" id="kickduplicates"> Do not allow duplicate game IDs.
+								</label>
+								<small id="kickduplicatesHelp" class="form-text text-muted">Second player with an existing ID will be kicked automatically. 1 means active, 0 disabled.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="verifySignature">Verify Signatures</label>
+							<select class="form-control" name="verifySignature" id="verifySignature" aria-describedby="verifySignatureHelp">
+								<option value="0">No Protection</option>
+								<option value="1">Weak protection</option>
+								<option value="2">Full protection</option>
+							</select>
+							<small id="verifySignatureHelp" class="form-text text-muted">Enables or disables the signature verification for addons.</small>
+						</div>
+						<div class="form-group">
+							<label for="disconnectTimeout">Disconnect Timeout</label>
+							<input type="number" class="form-control" name="disconnectTimeout" id="disconnectTimeout" aria-describedby="disconnectTimeoutHelp" value="90" min="5" max="90" placeholder="90 seconds">
+							<small id="disconnectTimeoutHelp" class="form-text text-muted">Server wait time before disconnecting client, default 90 seconds, range 5 to 90 seconds.</small>
+						</div>
+						<div class="form-group">
+							<label for="maxdesync">Max Desync</label>
+							<input type="number" class="form-control" name="maxdesync" id="maxdesync" aria-describedby="maxdesyncHelp" value="150" min="0" placeholder="150 ms">
+							<small id="maxdesyncHelp" class="form-text text-muted">Max desync value until server kicks the user. Units in miliseconds.</small>
+						</div>
+						<div class="form-group">
+							<label for="maxping">Max Ping</label>
+							<input type="number" class="form-control" name="maxping" id="maxping" aria-describedby="maxpingHelp" value="200" min="0" placeholder="200 ms">
+							<small id="maxpingHelp" class="form-text text-muted">Max ping value until server kicks the user. Units in miliseconds.</small>
+						</div>
+						<div class="form-group">
+							<label for="maxpacketloss">Max Packetloss</label>
+							<input type="number" class="form-control" name="maxpacketloss" id="maxpacketloss" aria-describedby="maxpacketlossHelp" value="50" min="0" placeholder="50 packets">
+							<small id="maxpacketlossHelp" class="form-text text-muted">Maximun number of packets lost until the server kicks the user.</small>
+						</div>
+						<div class="form-group">
+							<label for="allowedFilePatching">Allow File Patching</label>
+							<select class="form-control" name="allowedFilePatching" name="allowedFilePatching" id="allowedFilePatching" aria-describedby="allowedFilePatchingHelp">
+								<option value="0">No Clients</option>
+								<option value="1">Only Headless Clients</option>
+								<option value="2">All Clients</option>
+							</select>
+							<small id="allowedFilePatchingHelp" class="form-text text-muted">Prevent or allow file patching for the clients.</small>
+						</div>
+						<div class="form-group">
+							<label for="upnp">UPNP</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="upnp" id="upnp"> Activate uPnP
+								</label>
+								<small id="upnpHelp" class="form-text text-muted">Automatically creates port mapping on UPNP/IGD enabled router. This option allows you to create a server behind NAT (your router must have public IP and support UPNP/IGD
+									protocol).
+								</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="loopback">LAN Mode</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="loopback" id="loopback"> Activate LAN mode (loopback)
+								</label>
+								<small id="loopbackHelp" class="form-text text-muted">Adding this option will force server into LAN mode. This will allow multiple local instances of the game to connect to the server for testing purposes. At the same
+									time it will prevent all non-local instances from connecting.
+								</small>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<h2>In-Game Settings</h2>
+						<div class="form-group">
+							<label for="BattlEye">BattlEye</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="BattlEye" id="BattlEye" value="1" checked> Enable BattlEye on Server.
+								</label>
+								<small id="BattlEyeHelp" class="form-text text-muted">Enables or disables the BattlEye anti-cheat engine.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="drawingInMap">Drawing in Map</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="drawingInMap" id="drawingInMap" value="0"> Allow drawing in map.
+								</label>
+								<small id="drawingInMapHelp" class="form-text text-muted">Enables or disables the ability to place markers and draw lines in map.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="persistent">Persistent</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="persistent" id="persistent" value="0"> Active Persistance on server.
+								</label>
+								<small id="persistentHelp" class="form-text text-muted">Mission keeps running when all clients are disconnect.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="forceRotorLibSimulation">Advanced Flight Model</label>
+							<select class="form-control" name="forceRotorLibSimulation" id="forceRotorLibSimulation" aria-describedby="vonCodecHelp">
+								<option value="0">Up to the player</option>
+								<option value="1">Forced Advanced Flight Model</option>
+								<option value="2">Forced Simple Flight Model</option>
+							</select>
+							<small id="forceRotorLibSimulationHelp" class="form-text text-muted">Enforces the Advanced Flight Model on the server.</small>
+						</div>
+						<div class="form-group">
+							<label for="voteThreshold">Vote Threshold</label>
+							<input type="number" class="form-control" name="voteThreshold" id="voteThreshold" aria-describedby="voteThresholdHelp" value="33" min="0" max="100" placeholder="33%">
+							<small id="voteThresholdHelp" class="form-text text-muted">Percentage of votes needed to confirm a vote. Velue between 0-100. Units in %.</small>
+						</div>
+						<div class="form-group">
+							<label for="voteMissionPlayers">Vote Mission Players</label>
+							<input type="number" class="form-control" name="voteMissionPlayers" id="voteMissionPlayers" aria-describedby="voteMissionPlayersHelp" value="0" min="0" placeholder="0">
+							<small id="voteMissionPlayersHelp" class="form-text text-muted">Start mission-voting when X number of players are connected.</small>
+						</div>
+						<div class="form-group">
+							<label for="disableVoN">Disable VoN</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="disableVoN" id="disableVoN" value="0"> Disable In-Game Voice Communication.
+								</label>
+								<small id="disableVoNpHelp" class="form-text text-muted">Enables or disables the Voice over Net.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vonCodec">VoN Audio Codec</label>
+							<select class="form-control" name="vonCodec" id="vonCodec" aria-describedby="vonCodecHelp">
+								<option value="0">SPEEX codec</option>
+								<option value="1">OPUS codec</option>
+							</select>
+							<small id="vonCodecHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="vonCodecQuality">VoN Codec Quality</label>
+							<input type="number" class="form-control" name="vonCodecQuality" id="vonCodecQuality" aria-describedby="vonCodecQualityHelp" value="3" min="1" max="20" placeholder="3">
+							<small id="vonCodecQualityHelp" class="form-text text-muted">Defines VoN codec quality. Quality: 8kHz is 0-10, 16kHz is 11-20, for 21-30 it's 32kHz for SPEEX codec and 48kHz for OPUS codec. Value range is from 1 to 30.</small>
+						</div>
+					</fieldset>
+					<fieldset>
+						<h2>Missions Settings</h2>
+						missionWhitelist
+					</fieldset>
+					<fieldset>
+						<h2>Log Settings</h2>
+						timeStampFormat
+					</fieldset>
+					<fieldset>
+						<h2>Difficulty Settings</h2>
+						timeStampFormat
+					</fieldset>
+					<button type="submit" class="btn btn-primary">Generate</button>
+				</form>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<footer>
+				<p>© By-Jokese 2017</p>
+			</footer>
+		</div>
+	</div>
+	<!-- /container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	    crossorigin="anonymous"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+</html>
