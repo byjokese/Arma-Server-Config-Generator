@@ -278,11 +278,188 @@
 						missionWhitelist
 					</fieldset>
 					<fieldset>
-						<h2>Log Settings</h2>
-						timeStampFormat
+						<h2>Difficulty Settings</h2>
+						<!-- Situational awareness -->
+						<div class="form-group">
+							<label for="reducedDamage">Reduced Damage</label>
+							<select class="form-control" name="reducedDamage" id="reducedDamage" aria-describedby="reducedDamageHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="reducedDamageHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="groupIndicators">Group Indicators</label>
+							<select class="form-control" name="groupIndicators" id="groupIndicators" aria-describedby="groupIndicatorsHelp">
+								<option value="0">Never</option>
+								<option value="1">Limited by Distance</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="groupIndicatorsHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="friendlyTags">Friendly Tags</label>
+							<select class="form-control" name="friendlyTags" id="friendlyTags" aria-describedby="friendlyTagsHelp">
+								<option value="0">Never</option>
+								<option value="1">Limited by Distance</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="friendlyTagsHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="enemyTags">Enemy Tags</label>
+							<select class="form-control" name="enemyTags" id="enemyTags" aria-describedby="enemyTagsHelp">
+								<option value="0">Never</option>
+								<option value="1">Limited by Distance</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="enemyTagsHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="detectedMines">Detect Mines</label>
+							<select class="form-control" name="detectedMines" id="detectedMines" aria-describedby="detectedMinesHelp">
+								<option value="0">Never</option>
+								<option value="1">Limited by Distance</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="detectedMinesHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="commands">Enemy Tags</label>
+							<select class="form-control" name="commands" id="commands" aria-describedby="commandsHelp">
+								<option value="0">Never</option>
+								<option value="1">Fade out</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="commandsHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="waypoints">Waypoints</label>
+							<select class="form-control" name="waypoints" id="waypoints" aria-describedby="waypointsHelp">
+								<option value="0">Never</option>
+								<option value="1">Fade out</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="waypointsHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="tacticalPing">Tactical Ping</label>
+							<select class="form-control" name="tacticalPing" id="tacticalPing" aria-describedby="tacticalPingHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="tacticalPingHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<!-- Personal awareness -->
+						<div class="form-group">
+							<label for="weaponInfo">Weapon Info</label>
+							<select class="form-control" name="weaponInfo" id="weaponInfo" aria-describedby="weaponInfoHelp">
+								<option value="0">Never</option>
+								<option value="1">Fade out</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="weaponInfoHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="stanceIndicator">Stance Indicator</label>
+							<select class="form-control" name="stanceIndicator" id="stanceIndicator" aria-describedby="stanceIndicatorHelp">
+								<option value="0">Never</option>
+								<option value="1">Fade out</option>
+								<option value="2">Always</option>
+							</select>
+							<small id="stanceIndicatorHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="staminaBar">Stamina Bar</label>
+							<select class="form-control" name="staminaBar" id="staminaBar" aria-describedby="staminaBarHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="staminaBarHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="weaponCrosshair">Weapon Crosshair</label>
+							<select class="form-control" name="weaponCrosshair" id="weaponCrosshair" aria-describedby="weaponCrosshairHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="weaponCrosshairHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="visionAid">Vision Aid</label>
+							<select class="form-control" name="visionAid" id="visionAid" aria-describedby="visionAidHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="visionAidHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="thirdPersonView">Third Person View</label>
+							<select class="form-control" name="thirdPersonView" id="thirdPersonView" aria-describedby="thirdPersonViewHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="thirdPersonViewHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="cameraShake">Camera Shake</label>
+							<select class="form-control" name="cameraShake" id="cameraShake" aria-describedby="cameraShakeHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="cameraShakeHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="scoreTable">Score Table</label>
+							<select class="form-control" name="scoreTable" id="scoreTable" aria-describedby="scoreTableHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="scoreTableHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="deathMessages">Death Messages</label>
+							<select class="form-control" name="deathMessages" id="deathMessages" aria-describedby="deathMessagesHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="deathMessagesHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="vonID">VoN ID</label>
+							<select class="form-control" name="vonID" id="vonID" aria-describedby="vonIDHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="vonIDHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="mapContent">Map Content</label>
+							<select class="form-control" name="mapContent" id="mapContent" aria-describedby="mapContentHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="mapContentHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="autoReport">Auto Report</label>
+							<select class="form-control" name="autoReport" id="autoReport" aria-describedby="autoReportHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="autoReportHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
+						<div class="form-group">
+							<label for="multipleSaves">Multiple Saves</label>
+							<select class="form-control" name="multipleSaves" id="multipleSaves" aria-describedby="multipleSavesHelp">
+								<option value="0">Disabled</option>
+								<option value="1">Enabled</option>
+							</select>
+							<small id="multipleSavesHelp" class="form-text text-muted">Defines VoN codec type.</small>
+						</div>
 					</fieldset>
 					<fieldset>
-						<h2>Difficulty Settings</h2>
+						<h2>Log Settings</h2>
 						timeStampFormat
 					</fieldset>
 					<button type="submit" class="btn btn-primary">Generate</button>
