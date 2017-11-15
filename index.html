@@ -55,6 +55,9 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">Arma 3 Server Config Generator</h1>
+			<h2>
+				<span class="badge badge-danger">BETA</span>
+			</h2>
 			<p>Generate your own server configs easily.</p>
 			<p>
 				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
@@ -106,13 +109,13 @@
 						</div>
 						<div class="form-group">
 							<label for="motdInterval">Motd Interval</label>
-							<input type="number" class="form-control" name="motdInterval" id="motdInterval" aria-describedby="motdIntervalHelp" min="0" placeholder='10'>
+							<input type="number" class="form-control" name="motdInterval" id="motdInterval" aria-describedby="motdIntervalHelp" value="5" min="0" placeholder='5'>
 							<small id="motdIntervalHelp" class="form-text text-muted">Time interval (in seconds) between each message.</small>
 						</div>
 						<div class="form-group">
-							<label for="adminList">Admin Whitelist</label>
-							<input type="text" class="form-control" name="adminList" id="adminList" aria-describedby="adminListHelp" placeholder='"UID1","UID2"'>
-							<small id="adminListHelp" class="form-text text-muted">List of admin Steam UIDs that are whitelisted. Those can use #login w/o password.</small>
+							<label for="admins">Admin Whitelist</label>
+							<input type="text" class="form-control" name="admins" id="admins" aria-describedby="adminsHelp" placeholder='"UID1","UID2"'>
+							<small id="adminsHelp" class="form-text text-muted">List of admin Steam UIDs that are whitelisted. Those can use #login w/o password.</small>
 						</div>
 						<div class="form-group">
 							<label for="headlessClients">Headless Client Whitelist</label>
@@ -128,27 +131,27 @@
 					<fieldset>
 						<h2>Connection Settings</h2>
 						<div class="form-group">
-							<label for="maxplayers">Max Players</label>
-							<input type="number" class="form-control" id="maxplayers" aria-describedby="maxplayersHelp" value="0" placeholder="Server public Name">
-							<small id="maxplayersHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
+							<label for="maxPlayers">Max Players</label>
+							<input type="number" class="form-control" name="maxPlayers" id="maxPlayers" aria-describedby="maxPlayersHelp" value="0" min="0" placeholder="0">
+							<small id="maxPlayersHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
 						</div>
 						<div class="form-group">
-							<label for="kickduplicates">Kick Duplicates</label>
+							<label for="kickDuplicate">Kick Duplicates</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="kickduplicates" id="kickduplicates"> Do not allow duplicate game IDs.
+									<input class="form-check-input" type="checkbox" name="kickDuplicate" id="kickDuplicate" checked> Do not allow duplicate game IDs.
 								</label>
-								<small id="kickduplicatesHelp" class="form-text text-muted">Second player with an existing ID will be kicked automatically. 1 means active, 0 disabled.</small>
+								<small id="kickduplicateHelp" class="form-text text-muted">Second player with an existing ID will be kicked automatically. 1 means active, 0 disabled.</small>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="verifySignature">Verify Signatures</label>
-							<select class="form-control" name="verifySignature" id="verifySignature" aria-describedby="verifySignatureHelp">
+							<label for="verifySignatures">Verify Signatures</label>
+							<select class="form-control" name="verifySignatures" id="verifySignatures" aria-describedby="verifySignaturesHelp">
 								<option value="0">No Protection</option>
 								<option value="1">Weak protection</option>
 								<option value="2">Full protection</option>
 							</select>
-							<small id="verifySignatureHelp" class="form-text text-muted">Enables or disables the signature verification for addons.</small>
+							<small id="verifySignaturesHelp" class="form-text text-muted">Enables or disables the signature verification for addons.</small>
 						</div>
 						<div class="form-group">
 							<label for="disconnectTimeout">Disconnect Timeout</label>
@@ -162,7 +165,7 @@
 						</div>
 						<div class="form-group">
 							<label for="maxping">Max Ping</label>
-							<input type="number" class="form-control" name="maxping" id="maxping" aria-describedby="maxpingHelp" value="200" min="0" placeholder="200 ms">
+							<input type="number" class="form-control" name="maxping" id="maxping" aria-describedby="maxpingHelp" value="200" min="0" placeholder="200">
 							<small id="maxpingHelp" class="form-text text-muted">Max ping value until server kicks the user. Units in miliseconds.</small>
 						</div>
 						<div class="form-group">
@@ -325,7 +328,7 @@
 							<small id="detectedMinesHelp" class="form-text text-muted">Defines VoN codec type.</small>
 						</div>
 						<div class="form-group">
-							<label for="commands">Enemy Tags</label>
+							<label for="commands">Commands</label>
 							<select class="form-control" name="commands" id="commands" aria-describedby="commandsHelp">
 								<option value="0">Never</option>
 								<option value="1">Fade out</option>
@@ -371,98 +374,132 @@
 						</div>
 						<div class="form-group">
 							<label for="staminaBar">Stamina Bar</label>
-							<select class="form-control" name="staminaBar" id="staminaBar" aria-describedby="staminaBarHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="staminaBarHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="staminaBar" id="staminaBar" checked> Allow to show stamina bar on player's HUD.
+								</label>
+								<small id="staminaBarHelp" class="form-text text-muted">Allow to show stamina bar on player's HUD.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="weaponCrosshair">Weapon Crosshair</label>
-							<select class="form-control" name="weaponCrosshair" id="weaponCrosshair" aria-describedby="weaponCrosshairHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="weaponCrosshairHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="weaponCrosshair" id="weaponCrosshair"> Allow to show weapon crosshair on player's HUD.
+								</label>
+								<small id="weaponCrosshairHelp" class="form-text text-muted">Enables/Disables the option to show the weapon crosshair on player's HUD.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="visionAid">Vision Aid</label>
-							<select class="form-control" name="visionAid" id="visionAid" aria-describedby="visionAidHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="visionAidHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="visionAid" id="visionAid"> Allow to show weapon crosshair on player's HUD.
+								</label>
+								<small id="visionAidHelp" class="form-text text-muted">Enables/Disables the option to show the weapon crosshair on player's HUD.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="thirdPersonView">Third Person View</label>
-							<select class="form-control" name="thirdPersonView" id="thirdPersonView" aria-describedby="thirdPersonViewHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="thirdPersonViewHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="thirdPersonView" id="thirdPersonView"> Allow the use of third person view.
+								</label>
+								<small id="thirdPersonViewHelp" class="form-text text-muted">Enables/Disables the option to use the third person view.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="cameraShake">Camera Shake</label>
-							<select class="form-control" name="cameraShake" id="cameraShake" aria-describedby="cameraShakeHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="cameraShakeHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="cameraShake" id="cameraShake"> Allow the use of third person view.
+								</label>
+								<small id="cameraShakeHelp" class="form-text text-muted">Enables/Disables the option to use the third person view.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="scoreTable">Score Table</label>
-							<select class="form-control" name="scoreTable" id="scoreTable" aria-describedby="scoreTableHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="scoreTableHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="scoreTable" id="scoreTable"> Allow to open the scoreboard table in-game.
+								</label>
+								<small id="scoreTableHelp" class="form-text text-muted">Enables/Disables the scoreboard option.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="deathMessages">Death Messages</label>
-							<select class="form-control" name="deathMessages" id="deathMessages" aria-describedby="deathMessagesHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="deathMessagesHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="deathMessages" id="deathMessages"> Allow to open the scoreboard table in-game.
+								</label>
+								<small id="deathMessagesHelp" class="form-text text-muted">Enables/Disables the scoreboard option.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="vonID">VoN ID</label>
-							<select class="form-control" name="vonID" id="vonID" aria-describedby="vonIDHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="vonIDHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="vonID" id="vonID"> Allow to see how is speking in VoN.
+								</label>
+								<small id="vonIDHelp" class="form-text text-muted">Enables/Disables the option to see how is speaking in VoN.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="mapContent">Map Content</label>
-							<select class="form-control" name="mapContent" id="mapContent" aria-describedby="mapContentHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="mapContentHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="mapContent" id="mapContent"> Allow to see the map content.
+								</label>
+								<small id="mapContentHelp" class="form-text text-muted">Enables/Disables the option to see how is speaking in VoN.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="autoReport">Auto Report</label>
-							<select class="form-control" name="autoReport" id="autoReport" aria-describedby="autoReportHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="autoReportHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="autoReport" id="autoReport"> Allow to see the map content.
+								</label>
+								<small id="autoReportHelp" class="form-text text-muted">Enables/Disables the option to see how is speaking in VoN.</small>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="multipleSaves">Multiple Saves</label>
-							<select class="form-control" name="multipleSaves" id="multipleSaves" aria-describedby="multipleSavesHelp">
-								<option value="0">Disabled</option>
-								<option value="1">Enabled</option>
-							</select>
-							<small id="multipleSavesHelp" class="form-text text-muted">Defines VoN codec type.</small>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="multipleSaves" id="multipleSaves"> Allow to see the map content.
+								</label>
+								<small id="multipleSavesHelp" class="form-text text-muted">Enables/Disables the option to see how is speaking in VoN.</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="skillAI">AI Skill</label>
+							<input type="number" class="form-control" name="skillAI" id="skillAI" aria-describedby="skillAIHelp" min="0" max="1" step="0.01" value="0.5" placeholder='0.5'>
+							<small id="skillAIHelp" class="form-text text-muted">Defines AI Skill. Value between 0-1.</small>
+						</div>
+						<div class="form-group">
+							<label for="precisionAI">AI Precision</label>
+							<input type="number" class="form-control" name="precisionAI" id="precisionAI" aria-describedby="precisionAIHelp" step="0.01" min="0" max="1" value="0.5" placeholder='0.5'>
+							<small id="precisionAIHelp" class="form-text text-muted">Defines AI Skill. Value between 0-1.</small>
 						</div>
 					</fieldset>
 					<fieldset>
 						<h2>Log Settings</h2>
-						timeStampFormat
+						<div class="form-group">
+							<label for="logFile">Log File</label>
+							<input type="text" class="form-control" name="logFile" id="logFile" aria-describedby="logFileHelp" value="server_console.log" placeholder='"server_console.log"'>
+							<small id="logFileHelp" class="form-text text-muted">Enables output of dedicated server console into textfile. Default location of log is same as crash dumps and other logs.</small>
+						</div>
+						<div class="form-group">
+							<label for="timeStampFormat">Time Stamps Format</label>
+							<select class="form-control" name="timeStampFormat" id="timeStampFormat" aria-describedby="timeStampFormatHelp">
+								<option value="none">None</option>
+								<option value="short">Short</option>
+								<option value="full">Full</option>
+							</select>
+							<small id="timeStampFormatHelp" class="form-text text-muted">Set the timestamp format used on each report line in server-side RPT file.</small>
+						</div>
 					</fieldset>
-					<button type="submit" class="btn btn-primary">Generate</button>
+					<button type="button" class="btn btn-primary" onclick="generateConfigFile()">Generate</button>
 				</form>
 			</div>
 		</div>
@@ -479,14 +516,15 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
 	    crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	    crossorigin="anonymous"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
-
+	<script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
+	<script src="js/generateConfigFile.js"></script>
 </body>
 
 </html>
