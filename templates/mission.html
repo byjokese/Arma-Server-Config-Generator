@@ -1,0 +1,22 @@
+<div id="{{missionClassName}}" idValue="{{missionID}}">
+	<hr>
+	<div style="display: flex;flex-wrap: nowrap;justify-content:space-between;">
+		<h4 style="text-decoration: bold;">Mission #{{missionID}}</h4>
+		<button type="button" class="btn btn-danger btn-sm" onclick="deletechild('{{missionClassName}}')" style="right:0px;">Remove</button>
+	</div>
+	<div class="form-group">
+		<label for="{{missionName}}">Mission Name and Map (.pbo)</label>
+		<input type="text" class="form-control" name="{{missionName}}" id="{{missionName}}" aria-describedby="{{missionName}}Help" placeholder="My_mission.Altis">
+		<small id="{{missionName}}Help" class="form-text text-muted">The name of the mission file (.pbo), the sever should look for.</small>
+	</div>
+	<div class="form-group">
+		<label for="{{missionDifficulty}}">Mission Difficulty</label>
+		<select class="form-control" name="{{missionDifficulty}}" id="{{missionDifficulty}}" aria-describedby="{{missionDifficulty}}Help">
+			<option value="Recruit">Recruit</option>
+			<option value="Regular">Regular</option>
+			<option value="Veteran">Veteran</option>
+			<option value="Custom">Custom</option>
+		</select>
+		<small id="{{missionDifficulty}}Help" class="form-text text-muted">Mission difficulty preset. If Custom is selected, further configuration is needed over Difficulty Settings section.</small>
+	</div>
+</div>

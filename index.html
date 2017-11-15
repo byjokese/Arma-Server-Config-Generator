@@ -72,10 +72,10 @@
 				<div style="text-align: center;">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-secondary active">
-							<input type="radio" name="options" id="option1" autocomplete="off" checked> Basic
+							<input type="radio" class="modeSelector" name="options" id="basicMode" autocomplete="off" checked> Basic
 						</label>
 						<label class="btn btn-secondary">
-							<input type="radio" name="options" id="option2" autocomplete="off"> Advanced
+							<input type="radio" class="modeSelector" name="options" id="advancedMode" autocomplete="off"> Advanced
 						</label>
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 							<input type="passwordAdmin" class="form-control" name="passwordAdmin" id="passwordAdmin" aria-describedby="passwordAdminHelp" placeholder="Admin Password">
 							<small id="passwordAdminHelp" class="form-text text-muted">Password to become server admin. When you're in Arma MP and connected to the server, type '#login mypassword'</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="serverCommandPassword">Command Password</label>
 							<input type="password" class="form-control" name="serverCommandPassword" id="serverCommandPassword" aria-describedby="serverCommandPasswordHelp" placeholder="Password">
 							<small id="serverCommandPasswordHelp" class="form-text text-muted">Password required by alternate syntax of serverCommand on server-side scripting.</small>
@@ -112,17 +112,17 @@
 							<input type="number" class="form-control" name="motdInterval" id="motdInterval" aria-describedby="motdIntervalHelp" value="5" min="0" placeholder='5'>
 							<small id="motdIntervalHelp" class="form-text text-muted">Time interval (in seconds) between each message.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="admins">Admin Whitelist</label>
 							<input type="text" class="form-control" name="admins" id="admins" aria-describedby="adminsHelp" placeholder='"UID1","UID2"'>
 							<small id="adminsHelp" class="form-text text-muted">List of admin Steam UIDs that are whitelisted. Those can use #login w/o password.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="headlessClients">Headless Client Whitelist</label>
 							<input type="text" class="form-control" name="headlessClients" id="headlessClients" aria-describedby="headlessClientsHelp" placeholder='"127.0.0.1","8.8.8.8","IP"'>
 							<small id="headlessClientsHelp" class="form-text text-muted">List of IPs that are whitelisted for joining as HeadlessClient.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="localClient">Local Client Whitelist (low latency)</label>
 							<input type="text" class="form-control" name="localClient" id="localClient" aria-describedby="localClientHelp" placeholder='"127.0.0.1","8.8.8.8","IP"'>
 							<small id="localClientHelp" class="form-text text-muted">Same as Headless Client Whitelist, but to indicate clients with unlimited bandwidth and nearly no latency.</small>
@@ -135,7 +135,7 @@
 							<input type="number" class="form-control" name="maxPlayers" id="maxPlayers" aria-describedby="maxPlayersHelp" value="0" min="0" placeholder="0">
 							<small id="maxPlayersHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="kickDuplicate">Kick Duplicates</label>
 							<div class="form-check">
 								<label class="form-check-label">
@@ -153,22 +153,22 @@
 							</select>
 							<small id="verifySignaturesHelp" class="form-text text-muted">Enables or disables the signature verification for addons.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="disconnectTimeout">Disconnect Timeout</label>
 							<input type="number" class="form-control" name="disconnectTimeout" id="disconnectTimeout" aria-describedby="disconnectTimeoutHelp" value="90" min="5" max="90" placeholder="90 seconds">
 							<small id="disconnectTimeoutHelp" class="form-text text-muted">Server wait time before disconnecting client, default 90 seconds, range 5 to 90 seconds.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="maxdesync">Max Desync</label>
 							<input type="number" class="form-control" name="maxdesync" id="maxdesync" aria-describedby="maxdesyncHelp" value="150" min="0" placeholder="150 ms">
 							<small id="maxdesyncHelp" class="form-text text-muted">Max desync value until server kicks the user. Units in miliseconds.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="maxping">Max Ping</label>
 							<input type="number" class="form-control" name="maxping" id="maxping" aria-describedby="maxpingHelp" value="200" min="0" placeholder="200">
 							<small id="maxpingHelp" class="form-text text-muted">Max ping value until server kicks the user. Units in miliseconds.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="maxpacketloss">Max Packetloss</label>
 							<input type="number" class="form-control" name="maxpacketloss" id="maxpacketloss" aria-describedby="maxpacketlossHelp" value="50" min="0" placeholder="50 packets">
 							<small id="maxpacketlossHelp" class="form-text text-muted">Maximun number of packets lost until the server kicks the user.</small>
@@ -182,7 +182,7 @@
 							</select>
 							<small id="allowedFilePatchingHelp" class="form-text text-muted">Prevent or allow file patching for the clients.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="upnp">UPNP</label>
 							<div class="form-check">
 								<label class="form-check-label">
@@ -193,7 +193,7 @@
 								</small>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="loopback">LAN Mode</label>
 							<div class="form-check">
 								<label class="form-check-label">
@@ -262,7 +262,7 @@
 								<small id="disableVoNpHelp" class="form-text text-muted">Enables or disables the Voice over Net.</small>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="vonCodec">VoN Audio Codec</label>
 							<select class="form-control" name="vonCodec" id="vonCodec" aria-describedby="vonCodecHelp">
 								<option value="0">SPEEX codec</option>
@@ -270,7 +270,7 @@
 							</select>
 							<small id="vonCodecHelp" class="form-text text-muted">Defines VoN codec type.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="vonCodecQuality">VoN Codec Quality</label>
 							<input type="number" class="form-control" name="vonCodecQuality" id="vonCodecQuality" aria-describedby="vonCodecQualityHelp" value="3" min="1" max="20" placeholder="3">
 							<small id="vonCodecQualityHelp" class="form-text text-muted">Defines VoN codec quality. Quality: 8kHz is 0-10, 16kHz is 11-20, for 21-30 it's 32kHz for SPEEX codec and 48kHz for OPUS codec. Value range is from 1 to 30.</small>
@@ -278,7 +278,12 @@
 					</fieldset>
 					<fieldset>
 						<h2>Missions Settings</h2>
-						missionWhitelist
+						<div style="text-align: right">
+							<button type="button" class="btn btn-dark btn-sm" onclick="addNewMission()">Add Mission</button>
+						</div>
+						<div id="missionSettings" style="padding-left: 30px;">
+
+						</div>
 					</fieldset>
 					<fieldset>
 						<h2>Difficulty Settings</h2>
@@ -482,14 +487,14 @@
 							<small id="precisionAIHelp" class="form-text text-muted">Defines AI Skill. Value between 0-1.</small>
 						</div>
 					</fieldset>
-					<fieldset>
+					<fieldset class="advanced">
 						<h2>Log Settings</h2>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="logFile">Log File</label>
 							<input type="text" class="form-control" name="logFile" id="logFile" aria-describedby="logFileHelp" value="server_console.log" placeholder='"server_console.log"'>
 							<small id="logFileHelp" class="form-text text-muted">Enables output of dedicated server console into textfile. Default location of log is same as crash dumps and other logs.</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group advanced">
 							<label for="timeStampFormat">Time Stamps Format</label>
 							<select class="form-control" name="timeStampFormat" id="timeStampFormat" aria-describedby="timeStampFormatHelp">
 								<option value="none">None</option>
@@ -525,6 +530,41 @@
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
 	<script src="js/generateConfigFile.js"></script>
+
+	<script>
+		var lastMissionID = 1;
+		$(document).ready(function () {
+			$(".advanced").hide();
+		});
+
+		$('.modeSelector').change(function (e) {
+			$(".advanced").toggle();
+		});
+
+		var lastMissionID = 1;
+
+		function addNewMission() {
+			var baseClassName = "MissionRotation";
+			var baseMissionName = "MissionFileName";
+			var baseMissionDifficulty = "MissionDifficulty";
+			$.get('templates/mission.html', function (template) {
+				var rendered = Mustache.render(template, {
+					missionID: lastMissionID,
+					missionClassName: baseClassName + lastMissionID,
+					missionName: baseMissionName + lastMissionID,
+					missionDifficulty: baseMissionDifficulty + lastMissionID
+				});
+				$('#missionSettings').append(rendered);
+				lastMissionID++;
+			});
+		}
+
+		function deletechild(child) {
+			$("#" + child).remove();
+		}
+	</script>
 </body>
 
 </html>
+
+<hr>

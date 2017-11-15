@@ -30,6 +30,8 @@ function generateConfigFile() {
 			disableVoN: $("#disableVoN").val(),
 			vonCodec: $("#vonCodec").val(),
 			vonCodecQuality: $("#vonCodecQuality").val(),
+			//Missions
+			misssions: proccessMissionData(),
 			// Difficulty
 			reducedDamage: $("#reducedDamage").val(),
 			groupIndicators: $("#groupIndicators").val(),
@@ -75,3 +77,36 @@ function download(filename, text) {
 
 	document.body.removeChild(element);
 }
+
+
+function proccessMissionData() {
+	var index = 0;
+	var baseMissionName = "MissionFileName";
+	var baseMissionDifficulty = "MissionDifficulty";
+	var data = [];
+
+	$('#missionSettings').children().each(function (i) {
+		var missionId = this.getAttribute("idValue");
+		data.push({
+			"missionClassName": this.id,
+			"missionName": $("#" + baseMissionName + missionId).val(),
+			"missionDifficulty": $("#" + baseMissionDifficulty + missionId).val()
+		});
+	});
+	console.log(data);
+	return data;
+}
+
+
+/* misssions structure example
+[{
+		missionClassName: "TempMission1",
+		missionName: "My Mission",
+		missionDifficulty: "veteran"
+	},
+	{
+		missionClassName: "TempMission2",
+		missionName: "My Mission 2",
+		missionDifficulty: "normal"
+	}
+]*/
