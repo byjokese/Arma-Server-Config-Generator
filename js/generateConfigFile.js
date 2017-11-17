@@ -7,12 +7,12 @@ function generateConfigFile() {
 				passwordAdmin: $("#passwordAdmin").val(),
 				serverCommandPassword: ($("#serverCommandPassword").val()) ? $("#serverCommandPassword").val() : $("#passwordAdmin").val(),
 				//----
-				motd: proccessStringArray($("#motd").val()),
+				motd: proccessStringArray("motd", $("#motd").val()),
 				//----
 				motdInterval: $("#motdInterval").val(),
-				admins: proccessStringArray($("#admins").val()),
-				headlessClients: proccessStringArray($("#headlessClients").val()),
-				localClient: proccessStringArray($("#localClient").val()),
+				admins: proccessStringArray("admins", $("#admins").val()),
+				headlessClients: proccessStringArray("headlessClients", $("#headlessClients").val()),
+				localClient: proccessStringArray("localClient", $("#localClient").val()),
 				maxPlayers: $("#maxPlayers").val(),
 				kickDuplicate: (($("#kickDuplicate").is(':checked')) ? 1 : 0),
 				verifySignatures: $("#verifySignatures").val(),
@@ -22,11 +22,12 @@ function generateConfigFile() {
 				maxpacketloss: $("#maxpacketloss").val(),
 				allowedFilePatching: $("#allowedFilePatching").val(),
 				upnp: (($("#upnp").is(':checked')) ? 1 : 0),
+				loopback: (($("#loopback").is(':checked')) ? 1 : 0),
 				BattlEye: (($("#BattlEye").is(':checked')) ? 1 : 0),
 				drawingInMap: (($("#drawingInMap").is(':checked')) ? 1 : 0),
 				persistent: (($("#persistent").is(':checked')) ? 1 : 0),
 				forceRotorLibSimulation: $("#forceRotorLibSimulation").val(),
-				voteThreshold: $("#voteThreshold").val(),
+				voteThreshold: $("#voteThreshold").val() / 100,
 				voteMissionPlayers: $("#voteMissionPlayers").val(),
 				disableVoN: $("#disableVoN").val(),
 				vonCodec: $("#vonCodec").val(),
@@ -34,6 +35,8 @@ function generateConfigFile() {
 				//Missions
 				misssions: proccessMissionData(),
 				// Difficulty
+				forcedDifficulty: $("#forcedDifficulty").is(':checked'),
+				forcedDifficultyValue: $("#forcedDifficultyValue").val(),
 				reducedDamage: (($("#reducedDamage").is(':checked')) ? 1 : 0),
 				groupIndicators: $("#groupIndicators").val(),
 				friendlyTags: $("#friendlyTags").val(),
@@ -59,7 +62,7 @@ function generateConfigFile() {
 				precisionAI: $("#precisionAI").val(),
 				// Logs
 				logFile: $("#logFile").val(),
-				timeStampFormat: $("#multipleSaves").val()
+				timeStampFormat: $("#timeStampFormat").val()
 			};
 			var rendered = Mustache.render(template, data);
 			download("server.cfg", rendered);
@@ -82,26 +85,49 @@ function download(filename, text) {
 	document.body.removeChild(element);
 }
 
-function proccessStringArray(string) {
-	var messagues = string.split(",");
-	var mesgArraylenght = messagues.length;
-	var index = 0;
+function proccessStringArray(type, string) {
 	var data = [];
-	messagues.forEach(function (element) {
-		// Delete white space for second and on elements
-		if (element.charAt(0 == " "))
-			element = element.substr(1);
-		// If last element dont add any commas, else add a comma at the end
-		if (index == mesgArraylenght - 1)
-			var msg = '\"' + element + '\"';
-		else
-			var msg = '\"' + element + '\",';
-		//Add messague to the list of messagues.
-		data.push({
-			motd: msg
+	if (string != "") {
+		var messagues = string.split(",");
+		var mesgArraylenght = messagues.length;
+		var index = 0;
+		messagues.forEach(function (element) {
+			// Delete white space for second and on elements
+			if (element.charAt(0) == " ")
+				element = element.substr(1);
+			// If last element dont add any commas, else add a comma at the end
+			if (index == mesgArraylenght - 1)
+				var msg = '\"' + element + '\"';
+			else
+				var msg = '\"' + element + '\",';
+			//Add messague to the list of messagues.
+			switch (type) {
+				case "motd":
+					data.push({
+						motd: msg
+					});
+					break;
+				case "admins":
+					data.push({
+						admins: msg
+					});
+					break;
+				case "headlessClients":
+					data.push({
+						headlessClients: msg
+					});
+					break;
+				case "localClient":
+					data.push({
+						localClient: msg
+					});
+					break;
+				default:
+					break;
+			}
+			index++;
 		});
-		index++;
-	});
+	}
 	return data;
 }
 

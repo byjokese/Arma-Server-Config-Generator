@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+	<link rel="icon" type="image/png" href="./favicon.png">
 
 	<title>Arma 3 Server Config Generator</title>
 
@@ -20,6 +20,7 @@
 				position: fixed;
 				/*background-color: rgb(250, 250, 250);*/
 				width: 230px;
+				max-width: 230px;
 				height: auto;
 				top: 50%;
 				right: 2%;
@@ -28,15 +29,26 @@
 			}
 		}
 
+		@media screen and (max-width: 1610px) {
+			.lateralNav {
+				display: none;
+			}
+		}
+
 		.badge-danger {
 			background-color: rgb(255, 87, 87);
+		}
+
+		.disclaimer {
+			color: rgb(192, 192, 192);
+			font-size: 11px;
 		}
 	</style>
 </head>
 
 <body cz-shortcut-listen="true" data-spy="scroll">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">By-Jokese</a>
+		<a class="navbar-brand" href="https://byjokese.com">By-Jokese</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -67,7 +79,7 @@
 			</h2>
 			<p>Generate your own server configs easily.</p>
 			<p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
+				<a class="btn btn-primary btn-lg" href="https://github.com/byjokese/Arma-Server-Config-Generator" role="button">Learn more »</a>
 			</p>
 		</div>
 	</div>
@@ -102,7 +114,7 @@
 						</div>
 						<div class="form-group">
 							<label for="passwordAdmin">Admin Password</label>
-							<input type="passwordAdmin" class="form-control" name="passwordAdmin" id="passwordAdmin" aria-describedby="passwordAdminHelp" placeholder="Admin Password" required>
+							<input type="password" class="form-control" name="passwordAdmin" id="passwordAdmin" aria-describedby="passwordAdminHelp" placeholder="Admin Password" required>
 							<small id="passwordAdminHelp" class="form-text text-muted">Password to become server admin. When you're in Arma MP and connected to the server, type '#login mypassword'</small>
 						</div>
 						<div class="form-group advanced">
@@ -122,17 +134,17 @@
 						</div>
 						<div class="form-group advanced">
 							<label for="admins">Admin Whitelist</label>
-							<input type="text" class="form-control" name="admins" id="admins" aria-describedby="adminsHelp" placeholder='UID1,UID2'>
+							<input type="text" class="form-control" name="admins" id="admins" aria-describedby="adminsHelp" placeholder='UID1,UID2' pattern="([^,]+,)*[^,]+">
 							<small id="adminsHelp" class="form-text text-muted">List of admin Steam UIDs that are whitelisted. Those can use #login w/o password.</small>
 						</div>
 						<div class="form-group advanced">
 							<label for="headlessClients">Headless Client Whitelist</label>
-							<input type="text" class="form-control" name="headlessClients" id="headlessClients" aria-describedby="headlessClientsHelp" placeholder='127.0.0.1, 8.8.8.8'>
+							<input type="text" class="form-control" name="headlessClients" id="headlessClients" aria-describedby="headlessClientsHelp" placeholder='127.0.0.1, 8.8.8.8' pattern="([^,]+,)*[^,]+">
 							<small id="headlessClientsHelp" class="form-text text-muted">List of IPs that are whitelisted for joining as HeadlessClient.</small>
 						</div>
 						<div class="form-group advanced">
 							<label for="localClient">Local Client Whitelist (low latency)</label>
-							<input type="text" class="form-control" name="localClient" id="localClient" aria-describedby="localClientHelp" placeholder='127.0.0.1, 8.8.8.8'>
+							<input type="text" class="form-control" name="localClient" id="localClient" aria-describedby="localClientHelp" placeholder='127.0.0.1, 8.8.8.8' pattern="([^,]+,)*[^,]+">
 							<small id="localClientHelp" class="form-text text-muted">Same as Headless Client Whitelist, but to indicate clients with unlimited bandwidth and nearly no latency.</small>
 						</div>
 					</fieldset>
@@ -141,7 +153,7 @@
 						<h2>Connection Settings</h2>
 						<div class="form-group">
 							<label for="maxPlayers">Max Players</label>
-							<input type="number" class="form-control" name="maxPlayers" id="maxPlayers" aria-describedby="maxPlayersHelp" value="0" min="0" placeholder="0">
+							<input type="number" class="form-control" name="maxPlayers" id="maxPlayers" aria-describedby="maxPlayersHelp" value="8" min="0" placeholder="8">
 							<small id="maxPlayersHelp" class="form-text text-muted">The name of the server that shall be displayed in the public server list</small>
 						</div>
 						<div class="form-group advanced">
@@ -189,7 +201,9 @@
 								<option value="1">Only Headless Clients</option>
 								<option value="2">All Clients</option>
 							</select>
-							<small id="allowedFilePatchingHelp" class="form-text text-muted">Prevent or allow file patching for the clients.</small>
+							<small id="allowedFilePatchingHelp" class="form-text text-muted">Prevent or allow file patching for the clients. File patching is the ability for the engine to load local scripts and other files to override versions in packed addons.
+								Without file patching, the game only loads data from PBO and EBO files. The technique is used by developers and modders to quickly iterate on their work, but also
+								by exploits in multiplayer. Default is disabled (No Clients)</small>
 						</div>
 						<div class="form-group advanced">
 							<label for="upnp">UPNP</label>
@@ -230,7 +244,7 @@
 							<label for="drawingInMap">Drawing in Map</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="drawingInMap" id="drawingInMap" value="0"> Allow drawing in map.
+									<input class="form-check-input" type="checkbox" name="drawingInMap" id="drawingInMap" value="1" checked> Allow drawing in map.
 								</label>
 								<small id="drawingInMapHelp" class="form-text text-muted">Enables or disables the ability to place markers and draw lines in map.</small>
 							</div>
@@ -260,7 +274,7 @@
 						</div>
 						<div class="form-group">
 							<label for="voteMissionPlayers">Vote Mission Players</label>
-							<input type="number" class="form-control" name="voteMissionPlayers" id="voteMissionPlayers" aria-describedby="voteMissionPlayersHelp" value="0" min="0" placeholder="0">
+							<input type="number" class="form-control" name="voteMissionPlayers" id="voteMissionPlayers" aria-describedby="voteMissionPlayersHelp" value="1" min="0" placeholder="0">
 							<small id="voteMissionPlayersHelp" class="form-text text-muted">Start mission-voting when X number of players are connected.</small>
 						</div>
 						<div class="form-group">
@@ -299,6 +313,21 @@
 					<fieldset>
 						<a id="DifficultySettings" name="DifficultySettings"></a>
 						<h2>Difficulty Settings</h2>
+						<div class="form-group" style="margin-bottom: 40px;">
+							<label for="forcedDifficulty">Force Difficuty</label>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="forcedDifficulty" id="forcedDifficulty"> Force Difficulty on missions.
+								</label>
+								<select class="form-control" name="forcedDifficultyValue" id="forcedDifficultyValue" aria-describedby="forcedDifficultyHelp">
+									<option value="Recruit">Recruit</option>
+									<option value="Regular">Regular</option>
+									<option value="Veteran">Veteran</option>
+									<option value="Custom">Custom</option>
+								</select>
+								<small id="forcedDifficultyHelp" class="form-text text-muted">Enforces the selected difficulty on the server. If NOT selected will pick difficulty from each mission settings.</small>
+							</div>
+						</div>
 						<!-- Situational awareness -->
 						<div class="form-group">
 							<label for="reducedDamage">Reduced Damage</label>
@@ -313,7 +342,7 @@
 							<label for="groupIndicators">Group Indicators</label>
 							<select class="form-control" name="groupIndicators" id="groupIndicators" aria-describedby="groupIndicatorsHelp">
 								<option value="0">Never</option>
-								<option value="1">Limited by Distance</option>
+								<option value="1" selected>Limited by Distance</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="groupIndicatorsHelp" class="form-text text-muted">Shows indication icons on units in player's group.</small>
@@ -322,7 +351,7 @@
 							<label for="friendlyTags">Friendly Tags</label>
 							<select class="form-control" name="friendlyTags" id="friendlyTags" aria-describedby="friendlyTagsHelp">
 								<option value="0">Never</option>
-								<option value="1">Limited by Distance</option>
+								<option value="1" selected>Limited by Distance</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="friendlyTagsHelp" class="form-text text-muted">Friendly unit identification. Works only when player aims at a unit.</small>
@@ -331,7 +360,7 @@
 							<label for="enemyTags">Enemy Tags</label>
 							<select class="form-control" name="enemyTags" id="enemyTags" aria-describedby="enemyTagsHelp">
 								<option value="0">Never</option>
-								<option value="1">Limited by Distance</option>
+								<option value="1" selected>Limited by Distance</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="enemyTagsHelp" class="form-text text-muted">Enemy unit identification. Works only when player aims at a unit.</small>
@@ -340,7 +369,7 @@
 							<label for="detectedMines">Detect Mines</label>
 							<select class="form-control" name="detectedMines" id="detectedMines" aria-describedby="detectedMinesHelp">
 								<option value="0">Never</option>
-								<option value="1">Limited by Distance</option>
+								<option value="1" selected>Limited by Distance</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="detectedMinesHelp" class="form-text text-muted">Shows icons indicating exact positions of mines.</small>
@@ -349,7 +378,7 @@
 							<label for="commands">Commands</label>
 							<select class="form-control" name="commands" id="commands" aria-describedby="commandsHelp">
 								<option value="0">Never</option>
-								<option value="1">Fade out</option>
+								<option value="1" selected>Fade out</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="commandsHelp" class="form-text text-muted">Displays commands icons like target markers, get in command and others.</small>
@@ -358,7 +387,7 @@
 							<label for="waypoints">Waypoints</label>
 							<select class="form-control" name="waypoints" id="waypoints" aria-describedby="waypointsHelp">
 								<option value="0">Never</option>
-								<option value="1">Fade out</option>
+								<option value="1" selected>Fade out</option>
 								<option value="2">Always</option>
 							</select>
 							<small id="waypointsHelp" class="form-text text-muted">Manages visibility of waypoint markers.</small>
@@ -377,7 +406,7 @@
 							<select class="form-control" name="weaponInfo" id="weaponInfo" aria-describedby="weaponInfoHelp">
 								<option value="0">Never</option>
 								<option value="1">Fade out</option>
-								<option value="2">Always</option>
+								<option value="2" selected>Always</option>
 							</select>
 							<small id="weaponInfoHelp" class="form-text text-muted">Shows weapon info box (contains rouind & magazine count, firing mode, etc.)</small>
 						</div>
@@ -386,7 +415,7 @@
 							<select class="form-control" name="stanceIndicator" id="stanceIndicator" aria-describedby="stanceIndicatorHelp">
 								<option value="0">Never</option>
 								<option value="1">Fade out</option>
-								<option value="2">Always</option>
+								<option value="2" selected>Always</option>
 							</select>
 							<small id="stanceIndicatorHelp" class="form-text text-muted">Displays stance indication (contains actual stance, weapon resting & deployment).</small>
 						</div>
@@ -412,7 +441,7 @@
 							<label for="visionAid">Vision Aid</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="visionAid" id="visionAid"> Activate Vision Aid.
+									<input class="form-check-input" type="checkbox" name="visionAid" id="visionAid" checked> Activate Vision Aid.
 								</label>
 								<small id="visionAidHelp" class="form-text text-muted">Helps to detect units in visual range and identify friend from foe.</small>
 							</div>
@@ -421,7 +450,7 @@
 							<label for="thirdPersonView">Third Person View</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="thirdPersonView" id="thirdPersonView"> Allow the use of 3rd person view.
+									<input class="form-check-input" type="checkbox" name="thirdPersonView" id="thirdPersonView" checked> Allow the use of 3rd person view.
 								</label>
 								<small id="thirdPersonViewHelp" class="form-text text-muted">Enables camera switching to 3rd person view.</small>
 							</div>
@@ -439,7 +468,7 @@
 							<label for="scoreTable">Score Table</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="scoreTable" id="scoreTable"> Allow to open the scoreboard table in-game.
+									<input class="form-check-input" type="checkbox" name="scoreTable" id="scoreTable" checked> Allow to open the scoreboard table in-game.
 								</label>
 								<small id="scoreTableHelp" class="form-text text-muted">Displays table with kills, deaths and overall score in multiplayer.</small>
 							</div>
@@ -448,7 +477,7 @@
 							<label for="deathMessages">Death Messages</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="deathMessages" id="deathMessages"> Allow reports of death messagues.
+									<input class="form-check-input" type="checkbox" name="deathMessages" id="deathMessages" checked> Allow reports of death messagues.
 								</label>
 								<small id="deathMessagesHelp" class="form-text text-muted">Shows in chat window who killed the player.</small>
 							</div>
@@ -457,7 +486,7 @@
 							<label for="vonID">VoN ID</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="vonID" id="vonID"> Allow to see how is speking in VoN.
+									<input class="form-check-input" type="checkbox" name="vonID" id="vonID" checked> Allow to see how is speking in VoN.
 								</label>
 								<small id="vonIDHelp" class="form-text text-muted">Indicates who is spaking through VON communication.</small>
 							</div>
@@ -475,7 +504,7 @@
 							<label for="autoReport">Auto Report</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="autoReport" id="autoReport"> Allow to see the map content.
+									<input class="form-check-input" type="checkbox" name="autoReport" id="autoReport" checked> Allow to see the map content.
 								</label>
 								<small id="autoReportHelp" class="form-text text-muted">Enables automatic reporting of various situations by the player.</small>
 							</div>
@@ -484,7 +513,7 @@
 							<label for="multipleSaves">Multiple Saves</label>
 							<div class="form-check">
 								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="multipleSaves" id="multipleSaves"> Allow to see the map content.
+									<input class="form-check-input" type="checkbox" name="multipleSaves" id="multipleSaves" checked> Allow to see the map content.
 								</label>
 								<small id="multipleSavesHelp" class="form-text text-muted">Allows player to create multiple saves in a mission.</small>
 							</div>
@@ -541,6 +570,12 @@
 		<!--<div class="row">-->
 		<footer class="row" style="display: flex;flex-wrap: nowrap;justify-content:space-between;margin-bottom: 20px;padding-left: 15px;padding-right: 15px;">
 			<span>© By-Jokese 2017</span>
+			<span>
+				<small>
+					<a href="disclaimer.html" class="disclaimer">Read our Disclaimer
+						<a/>
+				</small>
+			</span>
 			<a href='https://ko-fi.com/byjokese' target='_blank'>
 				<img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 			</a>
@@ -553,7 +588,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
 	    crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
@@ -567,6 +602,8 @@
 		var lastMissionID = 1;
 		$(document).ready(function () {
 			$(".advanced").hide();
+			var form = document.getElementById("serverConfigForm");
+			form.reset();
 		});
 
 		$('.modeSelector').change(function (e) {
@@ -596,6 +633,9 @@
 		}
 
 		$('#motd').keyup(validateTextarea);
+		$('#admins').keyup(validateTextarea);
+		$('#headlessClients').keyup(validateTextarea);
+		$('#localClient').keyup(validateTextarea);
 
 		function validateTextarea() {
 			var errorMsg = "Please match the format requested (With no ending comma).";
