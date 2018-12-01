@@ -12,8 +12,7 @@
 	<title>Arma 3 Server Config Generator</title>
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-	    crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<style>
 		@media screen and (min-width: 1610px) {
 			.lateralNav {
@@ -56,7 +55,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home
+					<a class="nav-link" href="#">Server Config
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
@@ -64,8 +63,12 @@
 					<a class="nav-link" href="#">Presets</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="stringGen.html">Mod String</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="https://ko-fi.com/byjokese">Donate</a>
 				</li>
+
 			</ul>
 			<ul class="pull-right">
 				<div id="google_translate_element"></div>
@@ -572,11 +575,11 @@
 		<hr>
 		<!--<div class="row">-->
 		<footer class="row" style="display: flex;flex-wrap: nowrap;justify-content:space-between;margin-bottom: 20px;padding-left: 15px;padding-right: 15px;">
-			<span>© By-Jokese 2017</span>
+			<span>© By-Jokese 2017-2018</span>
 			<span>
 				<small>
 					<a href="disclaimer.html" class="disclaimer">Read our Disclaimer
-						<a/>
+					</a>
 				</small>
 			</span>
 			<a href='https://ko-fi.com/byjokese' target='_blank'>
@@ -592,10 +595,8 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-	    crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.min.js"></script>
@@ -665,11 +666,11 @@
 		}
 
 		function googleTranslateElementInit() {
-				new google.translate.TranslateElement({
-					pageLanguage: 'en',
-					layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-				}, 'google_translate_element');
-			}
+			new google.translate.TranslateElement({
+				pageLanguage: 'en',
+				layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+			}, 'google_translate_element');
+		}
 	</script>
 	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
